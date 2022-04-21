@@ -5,19 +5,24 @@
 // JSON
 
 import "../styles/App.scss";
-import {useState} from 'react'
+import backgroundImg from "../images/blackboard.jpg";
+import { useState } from "react";
 
 // Función principal.
 function App() {
+
+  
   // Variables generales, constantes, variables de estado.
   // Hooks.
   // Funciones generales, funnciones manejadoras de eventos.
 
-  const count = 0;
+ 
+  const [numberOfErrors, setNumberOfErrors] = useState(0)
+  
 
-  const handleClickBtn = (ev) => {
+  const handleClickButton = (ev) => {
     ev.preventDefault();
-    count = count +1;
+    numberOfErrors = numberOfErrors + 1;
   };
 
   return (
@@ -27,8 +32,8 @@ function App() {
       </header>
       <main className="main">
         <form action="">
-          <input type="text" value={count} />
-          <button onClick={handleClickBtn}>Incrementar</button>
+          <input type="text" value={setNumberOfErrors} />
+          <button onClick={handleClickButton}>Incrementar</button>
         </form>
 
         <section>
@@ -57,13 +62,13 @@ function App() {
               <li className="letter">x</li>
             </ul>
           </div>
-          <form className="form">
-            <label className="title" for="last-letter">
+          <form className="htmlfor">
+            <label className="title" htmlfor="last-letter">
               Escribe una letra:
             </label>
             <input
               autoComplete="off"
-              className="form__input"
+              className="htmlfor__input"
               maxLength="1"
               type="text"
               name="last-letter"
@@ -71,7 +76,7 @@ function App() {
             />
           </form>
         </section>
-        <section className="dummy error-5">
+        <section className="dummy error-{setNumberOfErrors}">
           <span className="error-13 eye"></span>
           <span className="error-12 eye"></span>
           <span className="error-11 line"></span>
