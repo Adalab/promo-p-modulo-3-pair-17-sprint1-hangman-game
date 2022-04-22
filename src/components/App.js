@@ -23,9 +23,17 @@ function App() {
   // Hooks.
   // Funciones generales, funnciones manejadoras de eventos.
 
-  const [numberOfErrors, setNumberOfErrors] = useState(0)
+  const [numberOfErrors, setNumberOfErrors] = useState(0);
+  const [lastLetter, setLastLetter] = useState("");
   
-
+  const handleInputLetter = (ev) => {
+    setLastLetter (ev.currentTarget.value)
+  };
+  const handleForm = (ev) => {
+    ev.preventDefault();
+    console.log (handleForm)
+  };
+  
   const handleClickButton = (ev) => {
     ev.preventDefault();
     setNumberOfErrors(numberOfErrors + 1);
@@ -68,7 +76,7 @@ function App() {
               <li className="letter">x</li>
             </ul>
           </div>
-          <form className="htmlfor">
+          <form className="htmlfor" onSubmit={handleForm}>
             <label className="title" htmlFor="last-letter">
               Escribe una letra:
             </label>
@@ -79,6 +87,8 @@ function App() {
               type="text"
               name="last-letter"
               id="last-letter"
+              value= {lastLetter}
+              onChange= {handleInputLetter}
             />
           </form>
         </section>
