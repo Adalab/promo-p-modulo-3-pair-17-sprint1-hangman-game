@@ -6,7 +6,14 @@
 
 import "../styles/App.scss";
 import backgroundImg from "../images/blackboard.jpg";
-import { useState } from "react";
+import {useState} from "react";
+import "../styles/_dummy.scss";
+import "../styles/_footer.scss";
+import "../styles/_form.scss";
+import "../styles/_header.scss";
+import "../styles/_instructions.scss";
+import "../styles/_letters.scss";
+import "../styles/_loading.scss";
 
 // Función principal.
 function App() {
@@ -16,13 +23,12 @@ function App() {
   // Hooks.
   // Funciones generales, funnciones manejadoras de eventos.
 
- 
   const [numberOfErrors, setNumberOfErrors] = useState(0)
   
 
   const handleClickButton = (ev) => {
     ev.preventDefault();
-    numberOfErrors = numberOfErrors + 1;
+    setNumberOfErrors(numberOfErrors + 1);
   };
 
   return (
@@ -32,7 +38,7 @@ function App() {
       </header>
       <main className="main">
         <form action="">
-          <input type="text" value={setNumberOfErrors} />
+          <input type="text" value={numberOfErrors} />
           <button onClick={handleClickButton}>Incrementar</button>
         </form>
 
@@ -63,7 +69,7 @@ function App() {
             </ul>
           </div>
           <form className="htmlfor">
-            <label className="title" htmlfor="last-letter">
+            <label className="title" htmlFor="last-letter">
               Escribe una letra:
             </label>
             <input
@@ -76,7 +82,7 @@ function App() {
             />
           </form>
         </section>
-        <section className="dummy error-{setNumberOfErrors}">
+        <section className={`dummy error-${numberOfErrors}`}>
           <span className="error-13 eye"></span>
           <span className="error-12 eye"></span>
           <span className="error-11 line"></span>
