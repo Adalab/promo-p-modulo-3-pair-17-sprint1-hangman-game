@@ -6,7 +6,7 @@
 
 import "../styles/App.scss";
 import backgroundImg from "../images/blackboard.jpg";
-import {useState} from "react";
+import { useState } from "react";
 import "../styles/_dummy.scss";
 import "../styles/_footer.scss";
 import "../styles/_form.scss";
@@ -14,26 +14,38 @@ import "../styles/_header.scss";
 import "../styles/_instructions.scss";
 import "../styles/_letters.scss";
 import "../styles/_loading.scss";
+import { type } from "@testing-library/user-event/dist/type";
 
 // Función principal.
 function App() {
 
-  
+
   // Variables generales, constantes, variables de estado.
   // Hooks.
   // Funciones generales, funnciones manejadoras de eventos.
 
   const [numberOfErrors, setNumberOfErrors] = useState(0);
   const [lastLetter, setLastLetter] = useState("");
-  
+  const [userLetters, setUserLetters] = useState([]);
   const handleInputLetter = (ev) => {
-    setLastLetter (ev.currentTarget.value)
-  };
+    const newValue = ev.currentTarget.value
+    setLastLetter(newValue)
+    console.log(ev.currentTarget.value)
+    /*if (/^[A-Za-záéíóú]$/.text(newValue)) {
+      setLastLetter(newValue);
+      setUserLetters([...userLetters, newValue]);
+    }
+    else {
+      setLastLetter("");
+    }*/
+  }
+
+
   const handleForm = (ev) => {
     ev.preventDefault();
-    console.log (handleForm)
+
   };
-  
+
   const handleClickButton = (ev) => {
     ev.preventDefault();
     setNumberOfErrors(numberOfErrors + 1);
@@ -87,8 +99,10 @@ function App() {
               type="text"
               name="last-letter"
               id="last-letter"
-              value= {lastLetter}
-              onChange= {handleInputLetter}
+              value={lastLetter}
+              onChange={handleInputLetter}
+              pattern="[a-zA-Z]"
+
             />
           </form>
         </section>
@@ -110,6 +124,7 @@ function App() {
       </main>
     </div>
   );
-}
+};
+
 
 export default App;
